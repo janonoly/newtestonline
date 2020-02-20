@@ -1,0 +1,15 @@
+python manage.py startapp exam   #创建应用
+在model中写表
+在admin中注册表
+通过 命令生成数据库表,执行
+
+再执行
+python manage.py migrate
+完成之后如不报错的话,我
+们再来刷新一下界面可以看到多了一个Demo菜单项
+（4）创建超级用户
+python manage.py createsuperuser
+（5）运行系统
+python manage.py runserver 0.0.0.0:8000
+浏览器登陆链接127.0.0.1/8000/login/。
+

@@ -1,0 +1,24 @@
+回退命令 ：
+$ git reset --hard HEAD^ 回退到上个版本
+$ git reset --hard HEAD~3 回退到前3次提交之前，以此类推，回退到n次提交之前
+$ git reset --hard commit_id 退到/\进到 指定commit的sha码
+
+$ git rm -r --cached .idea              # 删除.idea文件夹
+git config --global user.name "janono"
+git config --global user.email "1369021134@qq.com"
+
+Create a new repository
+git clone ssh://git@192.168.25.3:703/janono/d.git
+cd d
+touch README.md
+git add README.md
+git commit -m "add README"
+git push -u origin master
+
+Push an existing folder
+cd existing_folder
+git init
+git remote add origin ssh://git@192.168.25.3:703/janono/d.git
+git add .
+git commit -m "Initial commit"
+git push -u origin master

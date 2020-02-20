@@ -1,0 +1,7 @@
+操作系统：centos7
+浏览器：chrome
+win7+vc2017++
+python：3.7
+django：2.0.2
+硬件：RD640联想机架式服务器
+8G内存

@@ -1,0 +1,3 @@
+django插入数据，含有外键的表中，要先取外键，再插值。
+view中实现重定向return  redirect('/exams/train/'+str(tihaostart))
+

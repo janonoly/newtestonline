@@ -1,0 +1,43 @@
+#基础镜像为centos，版本为7，build镜像时会自动下载
+FROM centos:7
+ 
+#制作者信息
+MAINTAINER janono
+ 
+#设置环境变量
+
+#将Dockerfile同级目录下的文件复制到镜像中的/app/目录
+ADD app.zip /app/
+ADD CentOS7-Base-163.repo /app/
+ADD Centos-7.repo  /app/
+ADD pip.conf  /app/
+RUN cd /app/
+
+#更改yum为国内源
+RUN rm -rf /etc/yum.repos.d/*
+RUN mv -f /app/CentOS7-Base-163.repo /etc/yum.repos.d/CentOS7-Base-163.repo
+RUN mv -f /app/Centos-7.repo /etc/yum.repos.d/CentOS7-Base.repo
+RUN yum clean all
+RUN yum makecache
+RUN yum update
+
+#安装必要工具
+RUN yum install -y unzip
+RUN unzip -d /app /app/app.zip
+RUN yum install -y python3
+
+#更改pip源
+RUN mkdir ~/.pip/
+RUN mv -f /app/pip.conf ~/.pip/pip.conf
+
+#安装onlintest生产环境
+RUN pip3 install -r requirements.txt
+
+#安装数据库mysql，未完成
+
+#运行onlintest应用
+RUN python3 manage.py runserver 0.0.0.0:8000
+
+#执行镜像中的provision.sh脚本
+#RUN  /app/provision.sh
+

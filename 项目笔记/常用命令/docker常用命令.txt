@@ -1,0 +1,9 @@
+docker build -f Dockerfiledjango -t django:latest .
+docker run -it  django /bin/bash
+mv -f  Dockerfiledjango.0 Dockerfiledjango
+
+
+#删除镜像
+docker stop $(docker ps -q)
+docker rm $(docker ps -aq)
+docker images|grep none|awk '{print $3}'|xargs docker rmi

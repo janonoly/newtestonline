@@ -1,0 +1,15 @@
+#设置mysql可访问
+use mysql
+select user,host from user;
+mysql> update user set host = '%' where user = 'root';
+FLUSH PRIVILEGES;
+
+
+load data infile '/home/janono/exams_question.csv'
+into table Exams_question character set gb2312
+fields terminated by ',' optionally enclosed by '"' escaped by '"'
+lines terminated by '\r\n';
+
+select * from Exams_question;
+sql> delete from Exams_question;
+The MySQL server is running with the --secure-file-priv option so it cannot execute this statement
